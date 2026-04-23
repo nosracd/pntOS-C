@@ -1,0 +1,13 @@
+pntOS
+Copyright (c) 2019-2026 Integrated Solutions for Systems, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License").
+You may not use these files except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+The file `docs/_templates/footer.html` is a modified version of a file
+distributed by the Read the Docs Sphinx Theme project. The original code is
+licensed under the terms given by the Read the Docs Sphinx Theme project at
+https://github.com/readthedocs/sphinx_rtd_theme.

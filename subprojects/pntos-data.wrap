@@ -1,0 +1,7 @@
+[wrap-git]
+directory = pntos-data
+
+url = git@github.com:is4s/navigation-data.git
+# pntos/docs_v1 branch, committed 21 April 2026
+revision = ca869cf3386aff8b010902d17654e8cb8ad9c120
+depth = 1

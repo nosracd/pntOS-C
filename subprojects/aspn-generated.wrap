@@ -1,0 +1,7 @@
+[wrap-git]
+directory = aspn-generated
+
+url = https://github.com/is4s/aspn-generated.git
+# main branch - committed 13 April 2026
+revision = be18b7f69720044e8f6b7842812a27cb0016bbac
+depth = 1
