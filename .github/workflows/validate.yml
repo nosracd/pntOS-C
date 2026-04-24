@@ -1,0 +1,53 @@
+name: Validate
+
+on: [push, pull_request]
+
+jobs:
+    format:
+        runs-on: ubuntu-24.04
+        steps:
+        - uses: actions/checkout@v4
+        - name: Set up Python 3.13
+          uses: actions/setup-python@v3
+          with:
+              python-version: 3.13
+        - name: Install dependencies
+          run: |
+                set -xe
+                python -m pip install --upgrade pip
+                pip install meson
+        - name: Configure build directory
+          run: meson setup build
+        - name: Check formatting
+          run: ninja -C build clang-format-check
+
+    documentation:
+        runs-on: ubuntu-24.04
+        steps:
+        - uses: actions/checkout@v4
+        - name: Set up Python 3.12
+          uses: actions/setup-python@v3
+          with:
+              python-version: 3.12
+        - name: Install dependencies
+          run: |
+                set -xe
+                python -m pip install --upgrade pip
+                pip install -r docker/requirements_docs.txt
+                sudo apt update
+                sudo apt install doxygen -y
+        - name: Configure build directory
+          run: meson setup build
+        - name: Build docs
+          run: ninja -C build docs
+        - name: Archive Docs
+          uses: actions/upload-artifact@v4
+          with:
+            name: archived-docs
+            path: docs/_build/html
+
+        # This step only runs on the main branch
+        - name: Deploy Documentation
+          if: github.ref == 'refs/heads/main'
+          id: deployment
+          uses: actions/deploy-pages@v4
