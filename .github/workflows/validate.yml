@@ -49,7 +49,7 @@ jobs:
 
         # On non-main pushes, archive the docs.
         - name: Archive Docs
-          if: github.ref == 'refs/heads/main'
+          if: github.ref != 'refs/heads/main'
           uses: actions/upload-artifact@v4
           with:
             path: docs/_build/html
