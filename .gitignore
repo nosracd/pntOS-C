@@ -7,8 +7,6 @@ Thumbs.db
 doc
 .format-check
 .cache
-build
-build*/**
 cmake-build-*/**
 builddir/**
 .vscode/**
@@ -28,3 +26,7 @@ docs/version.py
 
 # Local Python virtual environment
 .venv/
+
+# Ignore meson artifacts
+/build*/
+/subprojects/*/
