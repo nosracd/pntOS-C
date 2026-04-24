@@ -49,7 +49,6 @@ jobs:
         - name: Archive Docs
           uses: actions/upload-artifact@v4
           with:
-            name: archived-docs
             path: docs/_build/html
 
 
