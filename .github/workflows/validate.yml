@@ -46,13 +46,20 @@ jobs:
           run: meson setup build
         - name: Build docs
           run: ninja -C build docs
+
+        # On non-main pushes, archive the docs.
         - name: Archive Docs
+          if: github.ref == 'refs/heads/main'
           uses: actions/upload-artifact@v4
           with:
             path: docs/_build/html
 
-
-        # This step only runs on the main branch
+        # On main pushes, deploy the docs.
+        - name: Upload Pages Artifact
+          if: github.ref == 'refs/heads/main'
+          uses: actions/upload-pages-artifact@v3
+          with:
+            path: docs/_build/html
         - name: Deploy Documentation
           if: github.ref == 'refs/heads/main'
           id: deployment
